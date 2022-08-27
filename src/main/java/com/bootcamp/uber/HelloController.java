@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/")
 public class HelloController {
@@ -26,5 +28,14 @@ public class HelloController {
     @PostMapping("/new-user")
     public String createUser(@RequestBody User user) {
         return "Hello " + user.getName() + " ! " + "Your age is " + user.getAge();
+    }
+
+    // http://localhost:8080/getTrips/ahmet
+    @GetMapping("/getTrips")
+    public List<Trip> getTrips(@PathVariable String username) {
+        User user = Database.getUserDB().get(username);
+        List<Trip> trips = Database.getTripDB().get(user);
+
+        return trips;
     }
 }
