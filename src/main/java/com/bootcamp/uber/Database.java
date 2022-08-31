@@ -1,8 +1,6 @@
 package com.bootcamp.uber;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Database {
     private static Map<String, User> userDB = new HashMap<>();
@@ -15,7 +13,7 @@ public class Database {
                 26,
                 "ahmetbskaya@gmail.com",
                 "ahmet123",
-                "todo",
+                "10.07.1997",
                 "Turkey",
                 false,
                 false
@@ -26,10 +24,10 @@ public class Database {
                 26,
                 "ayasinuysal@gmail.com",
                 "yasin123",
-                "todo",
+                "26.12.1995",
                 "Turkey",
                 false,
-                false
+                true
         );
 
         User hamitUser = new User(
@@ -37,7 +35,7 @@ public class Database {
                 26,
                 "hamitburakemre@gmail.com",
                 "hamit123",
-                "todo",
+                "10.10.1996",
                 "Turkey",
                 false,
                 false
@@ -47,14 +45,77 @@ public class Database {
         userDB.put("ayasinuysal", yasinUser);
         userDB.put("hamitb", hamitUser);
 
+        Driver driverMehmet = new Driver(
+                "Mehmet Ross",
+                "1",
+                "Doblo",
+                "mehmet131415",
+                "mehmetr@gmail.com"
+        );
 
+        Driver driverJack = new Driver(
+                "Jack Mark",
+                "2",
+                "BMW",
+                "jack131415",
+                "jackmark@gmail.com"
+        );
+
+        Driver driverYusuf = new Driver(
+                "Yusuf Miroğlu",
+                "3",
+                "Volvo",
+                "deliyurek123",
+                "deliyurek@gmail.com"
+        );
+
+        Address address1 = new Address(
+                "2nd",
+                "3564",
+                "Ireland"
+        );
+
+        Address address2 = new Address(
+                "Dublin",
+                "3562",
+                "Ireland"
+        );
+
+        Address address3 = new Address(
+                "Ataturk",
+                "34602",
+                "Turkey"
+        );
+
+        Address address4 = new Address(
+                "Kurak",
+                "35641",
+                "Turkey"
+        );
+
+        Trip hamitTrip = new Trip (
+                hamitUser,
+                "completed",
+                Arrays.asList(address1,address2),
+                "10.08.2021 15:03",
+                "10.08.2021 15:32",
+                false,
+                driverMehmet,
+                driverMehmet.getVehicleType(),
+                "15.03€"
+        );
+
+        List<Trip> hamitTrips = new ArrayList<Trip>();
+        hamitTrips.add(hamitTrip);
+
+        tripDB.put(hamitUser,hamitTrips);
         /*
-
-        Create trip data for each user first
+        Put Trips in Database;
 
         tripDB.put(hamitUser, hamitTrips);
         tripDB.put(ahmetUser, ahmetTrips);
         tripDB.put(yasinUser, yasinTrips);
+
          */
     }
 

@@ -31,7 +31,7 @@ public class HelloController {
     }
 
     // http://localhost:8080/getTrips/ahmet
-    @GetMapping("/getTrips")
+    @GetMapping("/getTrips/{username}")
     public List<Trip> getTrips(@PathVariable String username) {
         User user = Database.getUserDB().get(username);
         List<Trip> trips = Database.getTripDB().get(user);
