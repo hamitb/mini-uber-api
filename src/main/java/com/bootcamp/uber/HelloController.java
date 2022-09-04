@@ -5,10 +5,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/")
@@ -32,10 +33,17 @@ public class HelloController {
 
     // http://localhost:8080/getTrips/ahmet
     @GetMapping("/getTrips/{username}")
-    public List<Trip> getTrips(@PathVariable String username) {
+    public List<TripDTO> getTrips(@PathVariable String username) {
         User user = Database.getUserDB().get(username);
-        List<Trip> trips = Database.getTripDB().get(user);
 
-        return trips;
+        List<TripDTO> tripDTOs = Database
+                .getTripDB()
+                .get(user)
+                .stream()
+                .filter(trip -> trip.getStatus().equals("completed"))
+                .map(trip -> new TripDTO(trip))
+                .collect(Collectors.toList());
+
+        return tripDTOs;
     }
 }

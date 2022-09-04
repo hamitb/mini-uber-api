@@ -95,7 +95,7 @@ public class Database {
 
         Trip hamitTrip1 = new Trip (
                 hamitUser,
-                "completed",
+                "failed",
                 Arrays.asList(address1,address2),
                 "10.08.2021 15:03",
                 "10.08.2021 15:32",
