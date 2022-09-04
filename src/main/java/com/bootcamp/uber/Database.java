@@ -93,7 +93,7 @@ public class Database {
                 "Turkey"
         );
 
-        Trip hamitTrip = new Trip (
+        Trip hamitTrip1 = new Trip (
                 hamitUser,
                 "completed",
                 Arrays.asList(address1,address2),
@@ -105,8 +105,21 @@ public class Database {
                 "15.03€"
         );
 
+        Trip hamitTrip2 = new Trip (
+                hamitUser,
+                "completed",
+                Arrays.asList(address2,address1),
+                "10.08.2021 19:30",
+                "10.08.2021 20:05",
+                true,
+                driverJack,
+                driverJack.getVehicleType(),
+                "16.00€"
+        );
+
         List<Trip> hamitTrips = new ArrayList<Trip>();
-        hamitTrips.add(hamitTrip);
+        hamitTrips.add(hamitTrip1);
+        hamitTrips.add(hamitTrip2);
 
         tripDB.put(hamitUser,hamitTrips);
         /*
